@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+</head>
+<body>
+   <label for="language">Langage :</label>
+   <select name="language" id="language">
+      <option value="french" selected>Français</option>
+      <option value="english">Anglais</option>
+      <option value="german">Allemand</option>
+   </select>
+   <form>
+      <label for="check">Cochez-moi</label>
+      <input type="checkbox" id="check" name="check">
+      <br>
+      <input type="radio" name="gender" value="femme">Femme
+      <input type="radio" name="gender" value="homme">Homme
+      <br>
+      <br>
+      <div class="input-row">
+         <label for="username">Nom d'utilisateur</label>
+         <!-- <input type="text" name="username" id="username" /> -->
+         <input type="text" name="username" id="username" value="Jean"/>
+      </div>
+      <div class="input-row">
+         <label for="description">Description</label>
+         <textarea name="description" id="description"></textarea>
+      </div>
+      <div class="input-row">
+         <button type="submit">Envoyer</button>
+      </div>
+   </form>
+   <script src="script.js"></script>
+</body>
+</html>
