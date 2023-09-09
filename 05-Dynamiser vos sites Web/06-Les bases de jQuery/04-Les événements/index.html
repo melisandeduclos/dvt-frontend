@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Les bases de jQuery</title>
+    <style>
+      .box{
+         background-color: lightblue;
+         margin: 5vw 5vw 5vw 0;
+         width: 100px;
+         height: 100px;
+      }
+    </style>
+</head>
+<body>
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
+<script src="script.js"></script>
+
+<form id="contact-form">
+   <div class="input-row">
+      <label for="username">Identifiant</label>
+      <input type="text" name="username" id="username">
+   </div>
+   <div class="input-row">
+      <label for="phone">Numéro de téléphone</label>
+      <input type="text" name="phone" id="phone">
+   </div>
+   <div class="input-row">
+      <button type="submit" id="send-data">Envoyer</button>
+      <button type="reset" id="reset-data">Réinitialiser le formulaire</button>
+   </div>
+</form>
+
+<div class="box">
+
+</div>
+</body>
+</html>
