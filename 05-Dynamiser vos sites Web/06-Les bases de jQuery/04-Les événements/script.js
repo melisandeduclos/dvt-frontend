@@ -13,6 +13,13 @@ $(() => {
       console.log('Formulaire envoyé');
    })
 
+//Pour simuler un événement lorsque je quitte un champ texte
+   
+   $('#username').blur(function() {
+      //La fonction trigger permet d'appeler une autre fonction en jQuery
+      $('#contact-form').trigger('submit');
+   })
+})
+
 
    
-});
