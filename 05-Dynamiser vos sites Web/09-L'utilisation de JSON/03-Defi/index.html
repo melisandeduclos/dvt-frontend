@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+</head>
+<code><body>
+   <input id="button" type="button" value="Click to Populate SELECT with JSON" />
+   
+
+   <!--The SELECT element.-->
+   <select id="select">
+      <option value="">-- Select --</option>
+   </select>
+</body>
+
+<script>  
+// JSON.
+   const json = '[{"id":33,"name":"Boni Avenue"},{"id":34,"name":"Shaw Boulevard"},{"id":35,"name":"Rue Madeleine"},{"id":36,"name":"Shaw Boulevard"}]';
+
+   const select = document.getElementById('button');
+
+   const populateSelect = () => {
+      const data = JSON.parse(json);
+
+      let ele = document.getElementById('select');
+      for (var i in data){
+         let option = document.createElement('option')
+         option.value = data[i].id;
+         option.text = data[i].id+': '+data[i].name;
+         ele.appendChild(option)
+      }
+   }
+
+select.addEventListener('click', populateSelect);
+</script>
+
+</code>
+
+</html>

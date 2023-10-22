@@ -1,0 +1,13 @@
+{"student": [{
+      "name":"Paul",
+      "age":15,
+      "scores":[
+            {"matiere":"Maths","note":10},{"matiere":"Français","note":12},{"matiere":"Anglais","note":14}]
+   },
+   {
+      "name":"Marie",
+      "age":14,
+      "scores":[
+         {"matiere":"Maths","note":15},{"matiere":"Français","note":9},{"matiere":"Anglais","note":10}]
+   }]
+}
