@@ -14,37 +14,12 @@ if (canvas.getContext) {
    ctx.moveTo(110,75);
    //on trace un demi-cercle
    ctx.arc(75,75,35,0,Math.PI);
-   ctx.fillStyle = 'yellow'
-   ctx.fill();
    ctx.moveTo(65,65);
    ctx.arc(60,65,5,0,Math.PI*2);
    ctx.moveTo(85,65);
    ctx.lineTo(98,65);
    //mode de tracé
    //ctx.fill();
-   //largeur de trait
-   ctx.lineWidth = 4;
-   //couleur du trait
-   ctx.strokeStyle = 'pink'
    ctx.stroke();
    ctx.closePath();
-
-   //Dégradé du rectangle
-   const linearGradient = ctx.createLinearGradient(
-      20,170,120,270
-   );
-   linearGradient.addColorStop(0, '#ff4757');
-   linearGradient.addColorStop(1,'#5352ed');
-   
-   //couleur du rectangle
-   ctx.fillStyle = linearGradient;
-   ctx.fillRect(20,170,100,100);
-
-   //Ombre
-   ctx.shadowColor = 'gray';
-   ctx.shadowBlur = '15'; //Diffusion de l'ombre 
-   ctx.shadowOffsetX = 4;
-   ctx.shadowOffsetY = 4;
-
-   ctx.fillRect(140,170,100,100);
 }
