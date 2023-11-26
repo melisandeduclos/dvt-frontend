@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>03-Ajouter des éléments Exercice</title>
+</head>
+<style>
+   body{
+      margin: 0;
+   }
+   canvas{
+      margin: 10vw;
+   }
+</style>
+<body>
+   <h1>03-Ajouter des éléments - Exercice</h1>
+</body>
+<canvas width="300" height="300" id="canvas"></canvas>
+<script type="module">
+   import * as THREE from 'https://unpkg.com/three@0.122.0/build/three.module.js';
+   let htmlCanvas = document.getElementById('canvas');
+   // Déclaration de la scène
+   let scene = new THREE.Scene();
+   //Déclaration de la caméra
+   let camera = new THREE.PerspectiveCamera(60, htmlCanvas.width / htmlCanvas.height, 0.1, 1000);
+   camera.position.z = 15;
+   // Rendu de la scène
+   let renderer = new THREE.WebGLRenderer({
+         canvas: htmlCanvas
+   })
+   
+
+// Cylindre Création de la géométrie
+const gCyl = new THREE.CylinderGeometry( 0.5, 0.5, 6, 32 ); 
+//const material = new THREE.MeshStandardMaterial( {color: 0xfff7e6} );
+const materialw = new THREE.MeshStandardMaterial({
+    color : '#00FF80',
+    roughness: 0.3,
+ });
+
+const materialg = new THREE.MeshStandardMaterial({
+    color : '009933',
+    roughness: 0.3,
+ });
+
+const cylinder = new THREE.Mesh(gCyl, materialg);
+scene.add(cylinder);
+
+//Cone Création de la géométrie
+const gCone = new THREE.ConeGeometry(6,3,32);
+const cone = new THREE.Mesh(gCone, materialw);
+cylinder.add(cone);
+cone.position.set(0,5,-3);
+
+     // Ajout de la lumière blanche
+     //(couleur, intensité, distance)
+	   let light = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 );
+	   light.position.set(-6, -1, 0);
+	   scene.add(light);
+
+     // Rendu de la scène
+     //définition de la couleur de fond
+	renderer.setClearColor(0x87CEFA);
+   renderer.render(scene, camera);
+    
+</script>
+</html>

@@ -7,7 +7,7 @@ if (canvas.getContext) {
 
 let wCanvas = canvas.width;
 let hCanvas = canvas.height;
-let radius = (hCanvas/2)*.90
+let radius = (hCanvas/2)*0.90
 
 console.log(wCanvas);
 wCanvas  = wCanvas === '0' || wCanvas === null ? 150 : wCanvas;
@@ -20,34 +20,31 @@ canvas.setAttribute('width', wCanvas)
   // cercle de l'horloge
    ctx.beginPath();
    ctx.arc(0, 0, radius, 0, 2 * Math.PI);
-   ctx.lineWidth = radius*0.08
+   ctx.lineWidth = radius*0.1
+      // create radial gradient
+      const grad = ctx.createRadialGradient(0,0,radius*0.95, 0,0,radius*1.05);
+      grad.addColorStop(0, 'white');
+      grad.addColorStop(0.5, '#8ed6ff');
+      grad.addColorStop(1, '#004cb3');
+      ctx.strokeStyle = grad;
    ctx.stroke();
 
   //Mise en place des heures
    ctx.textAlign = 'center';
+   ctx.textBaseline = "middle";
    ctx.font = radius*0.15 + "px arial";
-   let angle = Math.PI/6
-  
-   ctx.rotate(angle);
-   // ctx.fillText('0', 0, 0);
-   ctx.translate(0, -radius*0.80);
-   // ctx.fillText('1', 0, 0);
-   ctx.rotate(-angle);
-   // ctx.fillText('2', 0, 0);
-   
-   ctx.rotate(angle);
-   ctx.fillText('3', 0, 0);
-   ctx.translate(0, radius*0.80);
-   //ctx.fillText('4', 0, 0);
-   ctx.rotate(-angle);
-   ctx.fillText('5', 0, 0);
-   
-   ctx.rotate(angle*2);
-   ctx.fillText('6', 0, 0);
-   ctx.translate(0, -radius*0.80);
-   ctx.fillText('7', 0, 0);
-   ctx.rotate(-angle*2);
-   ctx.fillText('8', 0, 0);
+   for (let num = 1; num < 13; num++){
+      let angle = num * Math.PI/6
+      ctx.rotate(angle);
+      ctx.translate(0, -radius*0.85);
+      ctx.rotate(-angle);
+      ctx.fillText(num.toString(), 0, 0);
+      ctx.rotate(angle);
+      ctx.translate(0, radius*0.85);
+      ctx.rotate(-angle);
+    };
+
+
 
 
 //   for (let i = 1; i < 12; i++){

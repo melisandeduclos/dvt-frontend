@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>03-Ajouter des éléments</title>
+</head>
+<style>
+   body{
+      margin: 0;
+   }
+   canvas{
+      margin: 10vw;
+   }
+</style>
+<body>
+   
+</body>
+<canvas width="300" height="300" id="canvas"></canvas>
+<script type="module">
+   import * as THREE from 'https://unpkg.com/three@0.122.0/build/three.module.js';
+   let htmlCanvas = document.getElementById('canvas');
+   // Déclaration de la scène
+   let scene = new THREE.Scene();
+   //Déclaration de la caméra
+   let camera = new THREE.PerspectiveCamera(60, htmlCanvas.width / htmlCanvas.height, 0.1, 1000);
+   camera.position.z = 5;
+   // Rendu de la scène
+   let renderer = new THREE.WebGLRenderer({
+         canvas: htmlCanvas
+   })
+   
+
+// Création de la géométrie
+   //Rectangle (largeur, hauteur, profondeur)
+   const geometryRect = new THREE.BoxGeometry(1,2,1);
+   //Sphere d'un rayon = 2, composé de 16 segments, hz et verticaux
+   const geometrySphere = new THREE.SphereGeometry(2, 16, 16);
+
+//Creation de la matière
+   //MeshBasicMaterial : pas effecté par le lumière
+   const basic = new THREE.MeshBasicMaterial({color: 0xFF00FF});
+   //MeshStandardMateriel : objet plus réaliste et affectés par la lumière
+   const standard = new THREE.MeshStandardMaterial();
+   //avec plus de rugosité
+   const standardRough = new THREE.MeshStandardMaterial({
+      roughness: 0.3,
+   });
+
+const rectangle = new THREE.Mesh(geometryRect, standardRough);
+rectangle.position.set(1,0,1.5);
+scene.add(rectangle);
+// renderer.render(scene, camera);
+
+// Création de la boîte
+let boxGeometry = new THREE.BoxGeometry(1, 2, 1);
+let material = new THREE.MeshBasicMaterial({color: 0xFF00FF});
+let box = new THREE.Mesh(boxGeometry, material);
+// Ajout de la boîte à la scène
+scene.add(box);
+// On place la boîte aux coordonnées (-2, 0, -3) de la scène
+box.position.set(-2, 0, -3);
+
+// Création du cône
+let coneGeometry = new THREE.ConeGeometry(1, 2);
+let cone = new THREE.Mesh(coneGeometry, material);
+// On ajoute le cône à la boîte
+box.add(cone);
+// On place le cône aux coordonnées (0, 2, 0) de la boîte. 
+// À noter qu'ici, on place le cône par rapport à la boîte et non pas à la scène.
+cone.position.set(0, 2, 0);
+
+	
+    // Ajout de la lumière blanche
+    //(couleur, intensité, distance)
+	  let light = new THREE.PointLight( 0xFFFFFF, 1, 50 );
+	  light.position.set(-0.5, 0.5, 0);
+	  scene.add(light);
+
+    // Rendu de la scène
+    //définition de la couleur de fond
+	renderer.setClearColor(0xEEEEEE);
+   renderer.render(scene, camera);
+    
+//scene.add(rectangle);
+//renderer.render(scene, camera);
+
+</script>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>02-Scène, caméra et renderer</title>
+</head>
+<style>
+   body{
+      margin: 0;
+   }
+   canvas {
+     margin-left: 10px;
+   }
+</style>
+<body>
+   
+</body>
+<canvas width="300" height="300" id="canvas"></canvas>
+<script type="module">
+   // https://unpkg.com/three@0.158.0/build/three.js
+   // ->
+   //https://unpkg.com/three@0.158.0/build/three.module.js
+   import * as THREE from 'https://unpkg.com/three@0.122.0/build/three.module.js';
+   // Déclaration de la scène
+   let scene = new THREE.Scene();
+   //Déclaration de la caméra
+   let camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+   //Modificaiton de sa position, décalage sur la droite
+   //Décaler la caméra sur la droite aura pour effet de
+   //décaler tous les objets du champ de vision sur la gauche de l'écran.
+   camera.position.x = 3 ;
+
+   //Création du renderer full screen
+   let renderer = new THREE.WebGLRenderer();
+   //Définition de la taille du canvas
+   renderer.setSize(window.innerWidth, window.innerHeight);
+   //Ajout du canvas dans la balise body
+   document.body.appendChild(renderer.domElement);
+
+   //ou pour utiliser le canvas défini dansla page html 
+   //et penser à redimensionner le ration de la camera
+   let htmlCanvas = document.getElementById('canvas');
+   let renderer = new THREE.WebGLRenderer({
+      canvas: htmlCanvas
+   });
+</script>
+</html>
