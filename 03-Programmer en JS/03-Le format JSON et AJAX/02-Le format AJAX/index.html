@@ -5,6 +5,16 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>02-AJAX</title>
 </head>
+<style>
+   table, th, td {
+      border: 1px solid black;
+      border-collapse: collapse;
+   }
+
+   th, td {
+      padding: 5px;
+   }
+</style>
 <body>
    <h1>AJAX</h1>
    <h2>l'objet XMLHttpRequest</h2>
@@ -12,6 +22,10 @@
    <div id="demo"></div>
    <div id="car"></div>
    <div id="allresponse"></div>
+   <br>
+   <button type="button" onclick="loadDoc2()">Afficher liste</button>
+   <table id="car2"></table>
+
 </body>
 <script src="script.js"></script>
 </html>

@@ -28,3 +28,24 @@ xhar.onload = function () {
 };
 xhar.open("GET", "demo.txt");
 xhar.send();
+
+/******** */
+function loadDoc2(){
+   const xht = new XMLHttpRequest();
+   xht.onload = function () {
+      myFunction(this);
+   };
+   xht.open("GET", "car2.xml");
+   xht.send();
+}
+
+function myFunction(xml) {
+   const xmlDoc = xml.responseXML;
+   const x = xmlDoc.getElementsByTagName("CAR");
+   let table = "<tr><th>Marque</th></tr>";
+   for (let i = 0; i < x.length; i++){
+      table += "<tr><td> " + x[i].getElementsByTagName("NAME")[0].
+      childNodes[0].nodeValue + "</td></tr>";
+   }
+   document.getElementById("car2").innerHTML = table;
+}
