@@ -3,7 +3,7 @@ function loadDoc(){
    xhttp.onload = function () {
       document.getElementById("demo").innerHTML = this.responseText;
    };
-   xhttp.open("GET", "demo.txt");
+   xhttp.open("GET", "demo.txt", true);
    xhttp.send();
 }
 
